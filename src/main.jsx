@@ -1,26 +1,19 @@
-import {
-  createBrowserRouter,
-  RouterProvider
-} from 'react-router-dom';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { RouterProvider } from 'react-router-dom';
 
-import Home from './Home';
-import Login from './Login';
-import Signup from './Signup';
+import { store } from './services/store';
+import { router } from './router';
+import './style.scss';
 
-const router = createBrowserRouter([
-  {
-    element: <Home />,
-    path: '/'
-  },
-  {
-    element: <Login />,
-    path: '/login'
-  },
-  {
-    element: <Signup />,
-    path: '/signup'
-  }
-]);
+ReactDOM.createRoot(document.querySelector('#root')).render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  </React.StrictMode>
+);
 
 const Main = () => (
   <main>
