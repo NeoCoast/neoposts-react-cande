@@ -1,63 +1,57 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+
+import { useCreateUserMutation } from './services/api';
+import PasswordInput from './PasswordInput';
+import TextInput from './TextInput';
 
 import Neopost from './assets/icons/neopost.svg';
 import BackgroundVector from './assets/background-vector.png';
-import PasswordInput from './PasswordInput';
-import TextInput from './TextInput';
-import toast from 'react-hot-toast';
-
 import './App.scss';
 
 const onError = () => {
   toast.error('Please fix the errors in the form.');
 };
 
+
 const Signup = () => {
+  const [createUser, { isLoading }] = useCreateUserMutation();
+
   const {
     register,
     handleSubmit,
     watch,
     setError,
     resetField,
+    getValues,
     formState: { errors }
   } = useForm({ mode: 'onChange' });
 
   const allFieldsFilled = watch('email') && watch('name') && watch('password') && watch('password_confirmation');
 
   const password = watch('password');
-  const apiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
 
   const onSubmit = async(data) => {
     try {
-      const response = await fetch(`${apiUrl}users`, {
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' },
-        method: 'POST'
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-
-        for (const [field, messages] of Object.entries(errorData.errors)) {
-          if (messages.length > 0) {
-            setError(field, { message: messages[0], type: 'manual' });
-          }
-        }
-
-        toast.error('Please fix the errors in the form.');
-        resetField('password');
-        resetField('password_confirmation');
-        return;
-      }
-
+      await createUser(data).unwrap();
       toast.success('Account created successfully!');
       navigate('/');
-    } catch {
-      toast.error('Something went wrong. Please try again later.');
+    } catch (error){
+      if (error.type === "backend") {
+        for (const [field, messages] of Object.entries(error.errors)) {
+          if (messages.length > 0 && field in getValues()) {
+            setError(field, { type: "manual", message: messages[0] });
+          }
+        }
+        toast.error('Please fix the errors in the form.');
+      } else {
+        toast.error('Something went wrong. Please try again later.');
+      }
       resetField('password');
       resetField('password_confirmation');
+      return;
     }
   };
 
@@ -155,7 +149,7 @@ const Signup = () => {
           }}
         />
 
-        <input type="submit" value="Sign Up" className="primary-button" disabled={!allFieldsFilled} />
+        <input type="submit" value="Sign Up" className="primary-button" disabled={!allFieldsFilled || isLoading} />
         <p
           style={{
             alignItems: 'center',

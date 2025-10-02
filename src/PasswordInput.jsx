@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import InputWrapper from './InputWrapper';
+
 import Eye from './assets/icons/eye.png';
 import EyeOff from './assets/icons/eye-off.png';
-import PropTypes from 'prop-types';
 
 const PasswordInput = ({ register, errors, name = 'password', placeholder = 'Password', rules }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,7 +20,6 @@ const PasswordInput = ({ register, errors, name = 'password', placeholder = 'Pas
           className={`input ${hasError ? 'input-error' : ''}`}
           placeholder={placeholder}
           style={{ paddingRight: '2.5rem', width: '100%' }}
-
         />
         <img
           src={showPassword ? EyeOff : Eye}
@@ -41,7 +41,12 @@ const PasswordInput = ({ register, errors, name = 'password', placeholder = 'Pas
 };
 
 PasswordInput.propTypes = {
-  errors: PropTypes.object.isRequired,
+  errors: PropTypes.objectOf(
+    PropTypes.shape({
+      type: PropTypes.string,
+      message: PropTypes.string,
+    })
+  ).isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   register: PropTypes.func.isRequired,

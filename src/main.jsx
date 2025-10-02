@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
+import { Toaster } from 'react-hot-toast';
 import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
+
 import { store } from './services/store';
 import { router } from './router';
-import { Toaster } from 'react-hot-toast';
 
 import './style.scss';
 

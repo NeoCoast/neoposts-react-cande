@@ -1,5 +1,6 @@
-import InputWrapper from './InputWrapper';
 import PropTypes from 'prop-types';
+
+import InputWrapper from './InputWrapper';
 
 const TextInput = ({ register, errors, name, placeholder, rules }) => {
   const hasError = errors[name];
@@ -16,7 +17,12 @@ const TextInput = ({ register, errors, name, placeholder, rules }) => {
 };
 
 TextInput.propTypes = {
-  errors: PropTypes.object.isRequired,
+  errors: PropTypes.objectOf(
+    PropTypes.shape({
+      type: PropTypes.string,
+      message: PropTypes.string,
+    })
+  ).isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   register: PropTypes.func.isRequired,
