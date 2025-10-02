@@ -14,7 +14,6 @@ const onError = () => {
   toast.error('Please fix the errors in the form.');
 };
 
-
 const Signup = () => {
   const [createUser, { isLoading }] = useCreateUserMutation();
 
@@ -38,11 +37,11 @@ const Signup = () => {
       await createUser(data).unwrap();
       toast.success('Account created successfully!');
       navigate('/');
-    } catch (error){
-      if (error.type === "backend") {
+    } catch (error) {
+      if (error.type === 'backend') {
         for (const [field, messages] of Object.entries(error.errors)) {
           if (messages.length > 0 && field in getValues()) {
-            setError(field, { type: "manual", message: messages[0] });
+            setError(field, { message: messages[0], type: 'manual' });
           }
         }
         toast.error('Please fix the errors in the form.');

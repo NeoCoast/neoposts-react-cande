@@ -43,14 +43,18 @@ const PasswordInput = ({ register, errors, name = 'password', placeholder = 'Pas
 PasswordInput.propTypes = {
   errors: PropTypes.objectOf(
     PropTypes.shape({
-      type: PropTypes.string,
       message: PropTypes.string,
+      type: PropTypes.string
     })
   ).isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   register: PropTypes.func.isRequired,
-  rules: PropTypes.object
+  rules: PropTypes.shape({
+    minLength: PropTypes.number,
+    pattern: PropTypes.instanceOf(RegExp),
+    required: PropTypes.bool
+  })
 };
 
 export default PasswordInput;

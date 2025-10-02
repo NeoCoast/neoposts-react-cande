@@ -1,4 +1,4 @@
-export const saveUserData = (response, meta) => {  
+export const saveUserData = (response, meta) => {
   const object = {
     accessToken: meta.response.headers.get('Access-Token'),
     client: meta.response.headers.get('client'),

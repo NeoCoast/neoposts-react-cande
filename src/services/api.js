@@ -13,17 +13,15 @@ export const api = createApi({
         body: data,
         method: 'POST',
         url: 'users'
-      }), 
+      }),
       transformErrorResponse: (response) => {
         if (response.data && response.data.errors) {
-          console.log("api if")
-          return { type: 'backend', errors: response.data.errors };
+          return { errors: response.data.errors, type: 'backend' };
         }
-        console.log("api no if")
-        return { type: 'unknown', raw: response };
+        return { raw: response, type: 'unknown' };
       },
       transformResponse: (response, meta) => saveUserData(response, meta)
-    }), 
+    }),
     getPosts: builder.query({
       providesTags: ['Post'],
       query: (body) => ({

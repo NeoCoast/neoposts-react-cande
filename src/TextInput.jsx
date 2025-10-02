@@ -19,14 +19,19 @@ const TextInput = ({ register, errors, name, placeholder, rules }) => {
 TextInput.propTypes = {
   errors: PropTypes.objectOf(
     PropTypes.shape({
-      type: PropTypes.string,
       message: PropTypes.string,
+      type: PropTypes.string
     })
   ).isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   register: PropTypes.func.isRequired,
-  rules: PropTypes.object
+  rules: PropTypes.shape({
+    maxLength: PropTypes.number,
+    minLength: PropTypes.number,
+    pattern: PropTypes.instanceOf(RegExp),
+    required: PropTypes.bool
+  })
 };
 
 export default TextInput;
