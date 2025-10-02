@@ -17,12 +17,10 @@ const TextInput = ({ register, errors, name, placeholder, rules }) => {
 };
 
 TextInput.propTypes = {
-  errors: PropTypes.objectOf(
-    PropTypes.shape({
-      message: PropTypes.string,
-      type: PropTypes.string
-    })
-  ).isRequired,
+  errors: PropTypes.shape({
+    message: PropTypes.string,
+    type: PropTypes.string
+  }),
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   register: PropTypes.func.isRequired,
