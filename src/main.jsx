@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Toaster } from 'react-hot-toast';
 import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 
 import { store } from './services/store';
 import { router } from './router';
+
 import './style.scss';
 
 ReactDOM.createRoot(document.querySelector('#root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />
+      <Toaster position="bottom-right" reverseOrder={false} />
     </Provider>
   </React.StrictMode>
 );

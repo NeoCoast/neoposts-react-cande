@@ -1,12 +1,16 @@
 import './App.scss';
 import Header from './Header';
-import Main from './main';
+import PropTypes from 'prop-types';
 
-const App = () => (
+const App = ({ children }) => (
   <>
     <Header />
-    <Main />
+    <main>{children}</main>
   </>
 );
+
+App.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export default App;
