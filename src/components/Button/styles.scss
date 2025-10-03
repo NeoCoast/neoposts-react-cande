@@ -1,0 +1,40 @@
+@import '../../variables';
+
+.btn {
+  border-radius: 6.667px;
+  width: 100%;
+  padding: 15px 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+
+  &--primary {
+    background: $primary-color;
+    color: white;
+
+    &:hover:not(:disabled) {
+      background: $primary-color;
+    }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: $secondary-color;
+    border: $secondary-color 1px solid;
+  }
+
+  &__text {
+    color: $text-color;
+  }
+
+  &__action {
+    color: $primary-color;
+    font-weight: bold;
+  }
+}

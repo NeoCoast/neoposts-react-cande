@@ -2,13 +2,14 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
-import { useCreateUserMutation } from './services/api';
-import PasswordInput from './PasswordInput';
-import TextInput from './TextInput';
+import { useCreateUserMutation } from '../../services/api';
+import Button from '../../components/Button';
+import TextInput from '../../components/TextInput';
 
-import Neopost from './assets/icons/neopost.svg';
-import BackgroundVector from './assets/background-vector.png';
-import './App.scss';
+import Neopost from '../../assets/icons/neopost.svg';
+import BackgroundVector from '../../assets/background-vector.png';
+import './styles.scss';
+import '../../components/button/styles.scss';
 
 const onError = () => {
   toast.error('Please fix the errors in the form.');
@@ -55,42 +56,14 @@ const Signup = () => {
   };
 
   return (
-    <div
-      className="form-container"
-      style={{
-        alignItems: 'center',
-        alignSelf: 'start',
-        display: 'flex',
-        justifyContent: 'space-between',
-        padding: '0',
-        width: '100%'
-      }}
-    >
+    <div className="signup__form-container">
       <form
         onSubmit={handleSubmit(onSubmit, onError)}
-        style={{
-          alignItems: 'flex-start',
-          display: 'inline-flex',
-          flexDirection: 'column',
-          gap: '30px',
-          margin: 'auto'
-        }}
+        className="signup__form"
       >
-        <div
-          style={{
-            display: 'flex',
-            gap: '25px'
-          }}
-        >
+        <div className = "signup__title-container">
           <img src={Neopost} alt="My Icon" />
-          <p
-            style={{
-              color: '#0F31AA',
-              fontSize: '45.496px',
-              fontWeight: '600',
-              lineHeight: '150%'
-            }}
-          >
+          <p className = "signup__title">
             NEOPOST
           </p>
         </div>
@@ -124,8 +97,10 @@ const Signup = () => {
             }
           }
         />
-        <PasswordInput
+        <TextInput
           name="password"
+          placeholder= "Password"
+          type="password"
           register={register}
           errors={errors}
           rules={{
@@ -137,8 +112,10 @@ const Signup = () => {
             required: 'Password is required'
           }}
         />
-        <PasswordInput
+        <TextInput
           name="password_confirmation"
+          placeholder= "Password confirmation"
+          type="password"
           register={register}
           errors={errors}
           rules={{
@@ -146,26 +123,26 @@ const Signup = () => {
             validate: (value) => value === password || 'Passwords do not match'
           }}
         />
-
-        <input type="submit" value="Sign Up" className="primary-button" disabled={!allFieldsFilled || isLoading} />
-        <p
-          style={{
-            alignItems: 'center',
-            color: '#8A8FA2',
-            display: 'flex',
-            gap: '33.333px',
-            justifyContent: 'center',
-            width: '435px'
-          }}
+        <Button
+          type="submit"
+          variant="primary"
+          disabled={!allFieldsFilled || isLoading}
         >
+          Sign Up
+        </Button>
+        <p className="signup__text">
           or
         </p>
-        <button type="button" className="secondary-button" onClick={() => navigate('/login')}>
-          <span style={{ color: '#333' }}>Already have an account?</span>{' '}
-          <span style={{ color: '#1445D8', fontWeight: 'bold' }}>Log in</span>
-        </button>
+        <Button
+          type="button"
+          variant="secondary"
+          onClick={() => navigate('/login')}
+        >
+          <span className="btn__text">Already have an account?</span>{' '}
+          <span className="btn__action">Log in</span>
+        </Button>
       </form>
-      <div className="image-container">
+      <div className="signup__image-container">
         <img
           src={BackgroundVector}
           alt="Background"
