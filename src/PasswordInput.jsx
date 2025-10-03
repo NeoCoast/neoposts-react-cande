@@ -6,9 +6,9 @@ import InputWrapper from './InputWrapper';
 import Eye from './assets/icons/eye.png';
 import EyeOff from './assets/icons/eye-off.png';
 
-const PasswordInput = ({ register, errors, name = 'password', placeholder = 'Password', rules }) => {
+const PasswordInput = ({ register, errors = {}, name = 'password', placeholder = 'Password', rules }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const hasError = errors[name];
+  const hasError = errors?.[name];
 
   return (
     <InputWrapper error={hasError}>

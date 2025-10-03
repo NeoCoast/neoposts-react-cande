@@ -28,8 +28,22 @@ export const api = createApi({
         body: body,
         url: 'posts'
       })
+    }),
+    login: builder.mutation({
+      query: (data) => ({
+        body: data,
+        method: 'POST',
+        url: 'users/sign_in'
+      }),
+      transformErrorResponse: (response) => {
+        if (response.data && response.data.errors) {
+          return { errors: response.data.errors, type: 'backend' };
+        }
+        return { raw: response, type: 'unknown' };
+      },
+      transformResponse: (response, meta) => saveUserData(response, meta)
     })
   })
 });
 
-export const { useGetPostsQuery, useCreateUserMutation } = api;
+export const { useGetPostsQuery, useCreateUserMutation, useLoginMutation } = api;

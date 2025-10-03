@@ -56,6 +56,7 @@ const Signup = () => {
 
   return (
     <div
+      className="form-container"
       style={{
         alignItems: 'center',
         alignSelf: 'start',
@@ -72,9 +73,7 @@ const Signup = () => {
           display: 'inline-flex',
           flexDirection: 'column',
           gap: '30px',
-          margin: 'auto',
-          width: '33%'
-
+          margin: 'auto'
         }}
       >
         <div
@@ -161,16 +160,18 @@ const Signup = () => {
         >
           or
         </p>
-        <button type="submit" className="secondary-button">
+        <button type="button" className="secondary-button" onClick={() => navigate('/login')}>
           <span style={{ color: '#333' }}>Already have an account?</span>{' '}
           <span style={{ color: '#1445D8', fontWeight: 'bold' }}>Log in</span>
         </button>
       </form>
-      <img
-        src={BackgroundVector}
-        alt="Background"
-        height="810px"
-      />
+      <div className="image-container">
+        <img
+          src={BackgroundVector}
+          alt="Background"
+          height="810px"
+        />
+      </div>
     </div>
   );
 };

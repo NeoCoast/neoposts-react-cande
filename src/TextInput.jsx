@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 
 import InputWrapper from './InputWrapper';
 
-const TextInput = ({ register, errors, name, placeholder, rules }) => {
-  const hasError = errors[name];
+const TextInput = ({ register, errors = {}, name, placeholder, rules }) => {
+  const hasError = errors?.[name];
 
   return (
     <InputWrapper error={hasError}>
