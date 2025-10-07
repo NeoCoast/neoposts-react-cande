@@ -10,3 +10,9 @@ export const saveUserData = (response, meta) => {
 
   return object;
 };
+
+export const isAuthenticated = () => {
+  const user = localStorage.getItem('user-profile-data');
+
+  return !!user;
+};

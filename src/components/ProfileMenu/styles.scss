@@ -1,0 +1,19 @@
+@import '../../variables';
+
+.profile-menu {
+  &-container {
+    background-color: $white;
+    height: 440px;
+    width: 205px;
+    margin-left: 80px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
+    padding: 20px;
+  } 
+}
+
+@media (width <= 954px) {
+  .profile-menu-container {
+    display: none;
+  }
+}
