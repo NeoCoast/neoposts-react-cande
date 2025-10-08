@@ -19,13 +19,13 @@ const Main = () => (
   <main>
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout redirectPath={ROUTES.login} />}>
-          <Route path={ROUTES.home} element={<Home />} />
+        <Route element={<Layout redirectPath={ROUTES.LOGIN} />}>
+          <Route path={ROUTES.HOME} element={<Home />} />
         </Route>
 
-        <Route element={<AuthRedirect redirectPath={ROUTES.home} />}>
-          <Route path={ROUTES.signup} element={<Signup />} />
-          <Route path={ROUTES.login} element={<Login />} />
+        <Route element={<AuthRedirect redirectPath={ROUTES.HOME} />}>
+          <Route path={ROUTES.SIGNUP} element={<Signup />} />
+          <Route path={ROUTES.LOGIN} element={<Login />} />
         </Route>
       </Routes>
       <Toaster position="bottom-right" reverseOrder={false} />

@@ -1,4 +1,4 @@
-import ProfileContent from '../Profile-content';
+import ProfileContent from '../ProfileContent';
 
 import './styles.scss';
 

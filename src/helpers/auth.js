@@ -12,7 +12,25 @@ export const saveUserData = (response, meta) => {
 };
 
 export const isAuthenticated = () => {
-  const user = localStorage.getItem('user-profile-data');
+  const userData = localStorage.getItem('user-profile-data');
 
-  return !!user;
+  if (!userData) return false;
+
+  const { accessToken } = JSON.parse(userData);
+
+  if (!accessToken) return false;
+
+  return true;
+};
+
+export const getAuthHeaders = () => {
+  const storedUser = JSON.parse(localStorage.getItem('user-profile-data'));
+
+  if (!storedUser) return {};
+
+  return {
+    'access-token': storedUser.accessToken,
+    client: storedUser.client,
+    uid: storedUser.email
+  };
 };

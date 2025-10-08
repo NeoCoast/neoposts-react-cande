@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import SideMenu from '../SideMenu/index';
 
-import Neopost from '../../assets/icons/neopost.svg';
-import Email from '../../assets/icons/email.svg';
-import People from '../../assets/icons/people.svg';
-import HamburgerMenu from '../../assets/icons/hamburger-menu.svg';
+import Neopost from '@assets/icons/neopost.svg';
+import Email from '@assets/icons/email.svg';
+import People from '@assets/icons/people.svg';
+import HamburgerMenu from '@assets/icons/hamburger-menu.svg';
 import './styles.scss';
 
 const Header = () => {

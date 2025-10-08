@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ProfileContent from '../Profile-content';
+import ProfileContent from '../ProfileContent';
 
 import './index.scss';
 

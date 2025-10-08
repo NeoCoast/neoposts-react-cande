@@ -1,4 +1,4 @@
-@import '../../variables';
+@import '@variables';
 
 .profile-content {
   &__container {
@@ -57,7 +57,7 @@
   }
 
   &__divider {
-    width: 120%;
+    width: 100%;
     border: none;
     border-top: $light-divider-color 1px solid;
     margin: 8px 0;

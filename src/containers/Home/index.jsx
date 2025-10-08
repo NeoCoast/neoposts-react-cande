@@ -1,5 +1,5 @@
-import Header from '../../components/Header';
-import ProfileMenu from '../../components/ProfileMenu';
+import Header from '@components/Header';
+import ProfileMenu from '@components/ProfileMenu';
 
 const Home = () => (
   <>

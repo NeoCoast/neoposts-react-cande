@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
-import { useSignOutMutation } from '../../services/api.js';
+import { useSignOutMutation } from '@services/api.js';
 
-import Button from '../../components/Button';
+import Button from '@components/Button';
 
-import Logout from '../../assets/icons/logout.svg';
-import Profile from '../../assets/icons/profile.svg';
+import Logout from '@assets/icons/logout.svg';
+import Profile from '@assets/icons/profile.svg';
 
 import './styles.scss';
 
