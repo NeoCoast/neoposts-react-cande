@@ -2,14 +2,14 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
-import { useCreateUserMutation } from '../../services/api';
-import Button from '../../components/Button';
-import TextInput from '../../components/TextInput';
+import { useCreateUserMutation } from '@services/api';
+import Button from '@components/Button';
+import TextInput from '@components/TextInput';
 
-import Neopost from '../../assets/icons/neopost.svg';
-import BackgroundVector from '../../assets/background-vector.png';
+import Neopost from '@assets/icons/neopost.svg';
+import BackgroundVector from '@assets/background-vector.png';
 import './styles.scss';
-import '../../components/button/styles.scss';
+import '@components/button/styles.scss';
 
 const onError = () => {
   toast.error('Please fix the errors in the form.');

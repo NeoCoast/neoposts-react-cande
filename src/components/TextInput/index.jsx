@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import Eye from '../../assets/icons/eye.png';
-import EyeOff from '../../assets/icons/eye-off.png';
+import Eye from '@assets/icons/eye.png';
+import EyeOff from '@assets/icons/eye-off.png';
 import './styles.scss';
 
 const TextInput = ({ register, errors = {}, name, placeholder, rules, type = 'text' }) => {

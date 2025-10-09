@@ -1,7 +1,18 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()]
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@assets': path.resolve(fileURLToPath(new URL('src/assets', import.meta.url))),
+      '@components': path.resolve(fileURLToPath(new URL('src/components', import.meta.url))),
+      '@helpers': path.resolve(fileURLToPath(new URL('src/helpers', import.meta.url))),
+      '@services': path.resolve(fileURLToPath(new URL('src/services', import.meta.url))),
+      '@styles': path.resolve(fileURLToPath(new URL('src/styles', import.meta.url))),
+      '@variables': path.resolve(fileURLToPath(new URL('src/variables.scss', import.meta.url)))
+    }
+  }
 });

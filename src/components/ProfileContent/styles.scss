@@ -1,0 +1,88 @@
+@import '@variables';
+
+.profile-content {
+  &__container {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    gap: 15px;
+  }
+
+  &__name { 
+    color: $black;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    margin: 0;
+  }
+
+  &__email {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    color: $secondary-text-color;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__item {
+    color: $secondary-text-color;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    margin: 0;
+
+  }
+
+  &__value {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    margin: 0;
+  }
+
+  &__div {
+    text-align: center;
+    max-width: -webkit-fill-available;
+  }
+
+  &__divider {
+    width: 100%;
+    border: none;
+    border-top: $light-divider-color 1px solid;
+    margin: 8px 0;
+  }
+
+  &__logout {
+    color: $text-color-light;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    gap: 9px;
+    border: 0;
+    background-color: transparent;
+
+    &:hover {
+      color: $text-color
+    }
+  }
+
+  &__logout-text {
+    margin: 0;
+  }
+
+  &__icon {
+    width: 23px;
+    height: 23px;
+  }
+}

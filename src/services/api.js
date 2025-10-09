@@ -1,7 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { fetchBaseQuery } from '@reduxjs/toolkit/query';
 
-import { saveUserData } from '../helpers/user.js';
+import { saveUserData, getAuthHeaders } from '../helpers/auth.js';
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
@@ -42,8 +42,15 @@ export const api = createApi({
         return { raw: response, type: 'unknown' };
       },
       transformResponse: (response, meta) => saveUserData(response, meta)
+    }),
+    signOut: builder.mutation({
+      query: () => ({
+        headers: getAuthHeaders(),
+        method: 'DELETE',
+        url: 'users/sign_out'
+      })
     })
   })
 });
 
-export const { useGetPostsQuery, useCreateUserMutation, useLoginMutation } = api;
+export const { useGetPostsQuery, useCreateUserMutation, useLoginMutation, useSignOutMutation } = api;
