@@ -1,0 +1,40 @@
+@import '@variables';
+
+.post {
+  display: flex;
+  padding-bottom: 15px;
+  border-bottom: $text-color-light 1px solid;
+  width: 100%;
+  overflow-wrap: anywhere;
+
+  &__image-container{
+    width: 60px;
+  }
+
+  &__author-img {
+    width: 55px;
+    height: 55px;
+  }
+
+  &__author_name {
+    color: $black;
+    margin-bottom: 5px;
+    margin-top: 0;
+  }
+
+  &__author_email {
+    color: $secondary-text-color;
+    margin: 0;
+    font-size: 15px;
+  }
+
+  &__body {
+    color: $black;
+    margin: 40px 0;
+  }
+
+  &__date {
+    font-size: 12px;
+    color: $secondary-text-color;
+  }
+}
