@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
-import { useSignOutMutation } from '@services/api.js';
+import { useSignOutMutation } from '@features/api/userSlice.js';
 
 import Button from '@components/Button';
 
@@ -13,24 +13,27 @@ import './styles.scss';
 const ProfileContent = () => {
   const [signOut] = useSignOutMutation();
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const handleSignOut = async() => {
     try {
       await signOut().unwrap();
-      localStorage.removeItem('user-profile-data');
+      localStorage.removeItem('user');
       navigate('/login');
     } catch {
       toast.error('Error signing out');
     }
   };
 
+  if (!user) return;
+
   return (
     <div className="profile-content__container">
       <img src={Profile} alt="" aria-hidden="true" />
 
       <div className="profile-content__div">
-        <p className="profile-content__name">John Doe</p>
-        <p className="profile-content__email">JohnDoe@email.com</p>
+        <p className="profile-content__name">{user.name}</p>
+        <p className="profile-content__email">{user.email}</p>
       </div>
 
       <Button type="new post" variant="primary">

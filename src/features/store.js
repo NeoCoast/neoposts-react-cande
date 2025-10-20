@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { api } from './api';
+import { api } from './api/api.js';
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) => [

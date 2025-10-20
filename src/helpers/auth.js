@@ -6,13 +6,13 @@ export const saveUserData = (response, meta) => {
     name: response.data.name
   };
 
-  localStorage.setItem('user-profile-data', JSON.stringify(object));
+  localStorage.setItem('user', JSON.stringify(object));
 
   return object;
 };
 
 export const isAuthenticated = () => {
-  const userData = localStorage.getItem('user-profile-data');
+  const userData = localStorage.getItem('user');
 
   if (!userData) return false;
 
@@ -24,7 +24,7 @@ export const isAuthenticated = () => {
 };
 
 export const getAuthHeaders = () => {
-  const storedUser = JSON.parse(localStorage.getItem('user-profile-data'));
+  const storedUser = JSON.parse(localStorage.getItem('user'));
 
   if (!storedUser) return {};
 
@@ -33,4 +33,8 @@ export const getAuthHeaders = () => {
     client: storedUser.client,
     uid: storedUser.email
   };
+};
+
+export const clearUserData = () => {
+  localStorage.removeItem('user');
 };

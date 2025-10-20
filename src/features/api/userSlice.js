@@ -1,12 +1,7 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
-import { fetchBaseQuery } from '@reduxjs/toolkit/query';
+import { api } from './api';
+import { saveUserData, clearUserData } from '@helpers/auth.js';
 
-import { saveUserData, getAuthHeaders } from '../helpers/auth.js';
-
-export const api = createApi({
-  baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_API_URL
-  }),
+export const userApi = api.injectEndpoints({
   endpoints: (builder) => ({
     createUser: builder.mutation({
       query: (data) => ({
@@ -21,13 +16,6 @@ export const api = createApi({
         return { raw: response, type: 'unknown' };
       },
       transformResponse: (response, meta) => saveUserData(response, meta)
-    }),
-    getPosts: builder.query({
-      providesTags: ['Post'],
-      query: (body) => ({
-        body: body,
-        url: 'posts'
-      })
     }),
     login: builder.mutation({
       query: (data) => ({
@@ -44,8 +32,15 @@ export const api = createApi({
       transformResponse: (response, meta) => saveUserData(response, meta)
     }),
     signOut: builder.mutation({
+      async onQueryStarted(argument, { queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          clearUserData();
+        } catch (error) {
+          return { raw: error, type: 'unknown' };
+        }
+      },
       query: () => ({
-        headers: getAuthHeaders(),
         method: 'DELETE',
         url: 'users/sign_out'
       })
@@ -53,4 +48,4 @@ export const api = createApi({
   })
 });
 
-export const { useGetPostsQuery, useCreateUserMutation, useLoginMutation, useSignOutMutation } = api;
+export const { useCreateUserMutation, useLoginMutation, useSignOutMutation } = api;
