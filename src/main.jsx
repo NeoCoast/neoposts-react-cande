@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { ROUTES } from './constants';
 
-import { store } from './services/store';
+import { store } from './features/store';
 import Layout from './Layout';
 import AuthRedirect from './AuthRedirect';
 import Home from './containers/Home';

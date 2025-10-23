@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { api } from './api';
+import { index } from './api';
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware({
       serializableCheck: false
-    }), api.middleware
+    }), index.middleware
   ],
   reducer: {
-    [api.reducerPath]: api.reducer
+    [index.reducerPath]: index.reducer
   }
 });

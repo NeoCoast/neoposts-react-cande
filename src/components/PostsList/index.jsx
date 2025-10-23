@@ -1,4 +1,4 @@
-import { useGetPostsQuery } from '@services/api';
+import { useGetPostsQuery } from '@features/api/postsSlice.js';
 
 import Post from '@components/Post';
 import './styles.scss';
@@ -32,7 +32,10 @@ const PostsList = () => {
 
   return (
     <div className="posts-list-container">
-      {data.map((post) => <Post key={post.id} post={post} />)}
+      { data
+        .toSorted((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+        .map((post) => <Post key={post.id} post={post} />)
+      }
     </div>
   );
 };
