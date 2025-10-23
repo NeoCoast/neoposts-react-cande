@@ -1,7 +1,7 @@
-import { api } from './api';
+import { index } from './index';
 import { saveUserData, clearUserData } from '@helpers/auth.js';
 
-export const userApi = api.injectEndpoints({
+export const userApi = index.injectEndpoints({
   endpoints: (builder) => ({
     createUser: builder.mutation({
       query: (data) => ({
@@ -48,4 +48,4 @@ export const userApi = api.injectEndpoints({
   })
 });
 
-export const { useCreateUserMutation, useLoginMutation, useSignOutMutation } = api;
+export const { useCreateUserMutation, useLoginMutation, useSignOutMutation } = userApi;

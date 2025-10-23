@@ -1,6 +1,6 @@
-import { api } from './api';
+import { index } from './index';
 
-export const postsApi = api.injectEndpoints({
+export const postsApi = index.injectEndpoints({
   endpoints: (builder) => ({
     getPosts: builder.query({
       providesTags: ['Post'],
